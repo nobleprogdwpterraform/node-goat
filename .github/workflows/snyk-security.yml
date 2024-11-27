@@ -20,7 +20,7 @@ jobs:
       with:
         args: >
           -Dsonar.organization=nobleprogorg
-          -Dsonar.projectKey=project-1
+          -Dsonar.projectKey=nobleprogorg_project-1
   security:
     runs-on: ubuntu-latest
     needs: build
