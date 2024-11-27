@@ -14,6 +14,15 @@ jobs:
     - uses: gitleaks/gitleaks-action@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Scan for Vulnerabilities with Trivy
+      uses: aquasecurity/trivy-action@v0.11.0
+      with:
+        scan-type: 'fs'
+        severity: 'HIGH,CRITICAL'
+        ignore-unfixed: false
+        format: 'table'
+        output: 'trivy-report.txt'
+        exit-code: 1
     - name: Run Semgrep Scan
       uses: returntocorp/semgrep-action@v1
       with:
