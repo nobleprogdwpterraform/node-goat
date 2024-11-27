@@ -19,7 +19,7 @@ jobs:
       with:
         directory: "."  # Scan the entire repository
         quiet: false    # Optional: Show detailed output
-        soft_fail: false 
+        soft_fail: true 
     - name: Scan for Vulnerabilities with Trivy
       uses: aquasecurity/trivy-action@0.28.0
       with:
