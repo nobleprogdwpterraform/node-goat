@@ -14,8 +14,14 @@ jobs:
     - uses: gitleaks/gitleaks-action@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Run Checkov Scan
+      uses: bridgecrewio/checkov-action@v12
+      with:
+        directory: "."  # Scan the entire repository
+        quiet: false    # Optional: Show detailed output
+        soft_fail: false 
     - name: Scan for Vulnerabilities with Trivy
-      uses: aquasecurity/trivy-action@v0.11.0
+      uses: aquasecurity/trivy-action@v0.11.2
       with:
         scan-type: 'fs'
         severity: 'HIGH,CRITICAL'
