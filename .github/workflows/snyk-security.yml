@@ -7,6 +7,7 @@ jobs:
     name: Run unit tests and SAST scan on the source code 
     steps:
     - uses: actions/checkout@v3
+    - run: npm install
     - uses: actions/setup-node@v3
       with:
         node-version: 16
@@ -33,7 +34,7 @@ jobs:
       uses: returntocorp/semgrep-action@v1
       with:
         config: "p/security-audit"
-    - run: npm install
+    
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
