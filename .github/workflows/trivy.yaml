@@ -1,0 +1,16 @@
+name: Trivy scan
+on: [push]
+jobs:
+  scan:
+    name: trivy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Scan for Vulnerabilities with Trivy
+      uses: aquasecurity/trivy-action@0.28.0
+      with:
+        scan-type: 'fs'
+        severity: 'HIGH,CRITICAL'
+        ignore-unfixed: false
+        format: 'table'
+        output: 'trivy-report.txt'
+        exit-code: 0
