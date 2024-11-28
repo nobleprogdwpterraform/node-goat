@@ -9,15 +9,6 @@ on:
     - .github/workflows/semgrep.yml
 name: Semgrep
 jobs:
-  checkov:
-    runs-on: ubuntu-latest
-    steps:  
-      - name: Run Checkov Scan
-        uses: bridgecrewio/checkov-action@v12
-        with:
-          directory: "."  # Scan the entire repository
-          quiet: false    # Optional: Show detailed output
-          soft_fail: true 
   semgrep:
     name: semgrep/ci
     runs-on: ubuntu-20.04
